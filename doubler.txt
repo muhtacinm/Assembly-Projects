@@ -1,0 +1,48 @@
+JMP shift
+
+number: DB 12
+double: DB 4
+
+shift:
+	MOV D, number
+	MOV A, [D]
+	MOV D, double
+	MOV B, [D]
+	SHL A, B
+
+firstdigit:
+	MOV C, A
+	MOV B, 100
+	DIV B
+	MOV B, A
+	MOV D, 232
+	ADD A, 48
+	MOV [D], A
+
+seconddigit:
+	MOV A, 100
+	MUL B
+	MOV B, C
+	SUB B, A
+	MOV A, B
+	MOV D, 10
+	DIV D
+	MOV D, 232
+	ADD A, 48
+	INC D  
+	MOV [D], A
+
+thirddigit:
+	MOV A, C
+	MOV B, 10
+	DIV B
+	MUL 10
+	MOV  D, A
+	SUB C, D
+	MOV B, C
+	MOV D, 232
+	ADD B, 48
+	INC D
+	INC D
+	MOV [D], B
+	HLT

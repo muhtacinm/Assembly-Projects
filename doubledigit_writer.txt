@@ -1,0 +1,28 @@
+JMP firstdigit
+
+variable: DB 78
+
+firstdigit:
+	MOV D, variable
+	MOV A, [D]
+	MOV B, 10
+	DIV B
+	MOV D, 232
+	ADD A, 48
+	MOV [D], A
+
+seconddigit:
+	MOV D, variable
+	MOV C, [D]
+	MOV A, [D]
+	MOV B, 10
+	DIV B
+	MUL 10
+	MOV  D, A
+	SUB C, D
+	MOV B, C
+	MOV D, 232
+	ADD B, 48
+	INC D  
+	MOV [D], B
+	HLT
